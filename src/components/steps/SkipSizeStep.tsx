@@ -25,7 +25,7 @@ const SkipSizeStep: React.FC<{
       description: "14 day hire period",
       price: 211,
       isSelected: false,
-      image: "https://placeholder.com/skip4y",
+      image: "src/assets/8-yarder-skip.jpg",
     },
     {
       id: "5y",
@@ -33,7 +33,7 @@ const SkipSizeStep: React.FC<{
       description: "14 day hire period",
       price: 241,
       isSelected: true,
-      image: "https://placeholder.com/skip5y",
+      image: "src/assets/8-yarder-skip.jpg",
     },
     {
       id: "6y",
@@ -41,7 +41,7 @@ const SkipSizeStep: React.FC<{
       description: "14 day hire period",
       price: 264,
       isSelected: false,
-      image: "https://placeholder.com/skip6y",
+      image: "src/assets/8-yarder-skip.jpg",
     },
   ]);
 
@@ -84,7 +84,11 @@ const SkipSizeStep: React.FC<{
             </div>
             <div className="w-full h-48 bg-gray-700 rounded-lg mb-4">
               <div className="w-full h-full flex items-center justify-center text-gray-400">
-                Skip Image Placeholder
+                <img
+                  src={size.image}
+                  alt={size.name}
+                  className="w-full h-full object-cover rounded-lg"
+                />
               </div>
             </div>
             <h3 className="text-xl font-medium mb-2">{size.name}</h3>

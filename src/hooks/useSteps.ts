@@ -10,5 +10,9 @@ export const useSteps = () => {
     setCurrentStep((prevStep) => (prevStep > 0 ? prevStep - 1 : prevStep));
   };
 
-  return { currentStep, goToNextStep, goToPreviousStep };
+  const goToStep = (step: number) => {
+    setCurrentStep(step);
+  };
+
+  return { currentStep, goToNextStep, goToPreviousStep, goToStep };
 };

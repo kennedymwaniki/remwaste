@@ -26,12 +26,11 @@ const AddressStep: React.FC<{
     });
     goToNextStep();
   };
-
   return (
-    <div className="flex flex-col space-y-6">
-      <h1 className="text-3xl font-bold text-center">SKIP HIRE</h1>
-      <h2 className="text-xl text-center">With A Difference</h2>
-      <div className="space-y-4">
+    <div className="flex flex-col space-y-6 max-w-2xl mx-auto">
+      <h1 className="text-3xl font-bold">SKIP HIRE</h1>
+      <h2 className="text-xl">With A Difference</h2>
+      <div className="space-y-4 bg-gray-800 p-6 rounded-lg shadow-lg">
         <Input
           label="Postcode"
           value={postcode}
@@ -59,15 +58,13 @@ const AddressStep: React.FC<{
               placeholder="House/Flat Number"
             />
           </>
-        )}{" "}
+        )}
       </div>
       <div className="flex justify-between mt-8">
         <Button variant="secondary" label="Back" onClick={goToPreviousStep} />
         <Button label="Continue →" onClick={handleSubmit} />
       </div>
-      <div className="text-center text-gray-400 text-sm mt-2">
-        Version 1.1.34
-      </div>
+      <div className="text-gray-400 text-sm mt-2">Version 1.1.34</div>
     </div>
   );
 };

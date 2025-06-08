@@ -47,8 +47,7 @@ const PaymentStep: React.FC<{ goToPreviousStep: () => void }> = ({
       type: ActionType.SET_PAYMENT_DETAILS,
       payload: paymentDetails,
     });
-    // Here you would normally handle the payment processing
-    // For this example, we'll just simulate it
+
     alert("Payment completed successfully!");
   };
 

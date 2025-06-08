@@ -64,11 +64,18 @@ const App: React.FC = () => {
     <BookingProvider>
       <div className="bg-gray-900 text-white min-h-screen">
         <Header />
-        <div className="max-w-7xl mx-auto px-4 py-8">
-          <StepProgressBar currentStep={currentStep} />
-          <div className="mt-12">{renderStep()}</div>
+        <div className="flex max-w-7xl mx-auto px-4">
+          {/* Left Sidebar with Steps */}
+          <div className="w-80 py-6 pr-8 sticky top-0 h-[calc(100vh-73px)]">
+            <StepProgressBar currentStep={currentStep} />
+          </div>
+
+          {/* Main Content */}
+          <div className="flex-1 py-6 flex flex-col min-h-[calc(100vh-73px)]">
+            <div className="flex-grow">{renderStep()}</div>
+            <Footer />
+          </div>
         </div>
-        <Footer />
       </div>
     </BookingProvider>
   );
