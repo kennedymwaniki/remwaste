@@ -7,6 +7,7 @@ interface InputProps {
   placeholder?: string;
   className?: string;
   type?: "text" | "email" | "password" | "number";
+  name?: string;
 }
 
 const Input: React.FC<InputProps> = ({
