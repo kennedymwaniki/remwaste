@@ -1,22 +1,23 @@
 import React, { useState } from "react";
 import Button from "../../components/common/Button";
 import Modal from "../../components/common/Modal";
-
 import { useBooking } from "../../context/BookingContext";
 import { ActionType } from "../../utils/reducer";
+import { FaHome, FaRoad } from "react-icons/fa";
 
 interface SkipPlacement {
   id: string;
   name: string;
   description: string;
   requiresPermit: boolean;
-  icon: string;
+  icon: React.ReactNode;
   isSelected: boolean;
 }
 
-const PermitCheckStep: React.FC<{ goToNextStep: () => void }> = ({
-  goToNextStep,
-}) => {
+const PermitCheckStep: React.FC<{
+  goToNextStep: () => void;
+  goToPreviousStep: () => void;
+}> = ({ goToNextStep, goToPreviousStep }) => {
   const { dispatch } = useBooking();
   const [skipPlacements, setSkipPlacements] = useState<SkipPlacement[]>([
     {
@@ -24,7 +25,7 @@ const PermitCheckStep: React.FC<{ goToNextStep: () => void }> = ({
       name: "Private Property",
       description: "Driveway or private land",
       requiresPermit: false,
-      icon: "🏠",
+      icon: <FaHome />,
       isSelected: true,
     },
     {
@@ -32,7 +33,7 @@ const PermitCheckStep: React.FC<{ goToNextStep: () => void }> = ({
       name: "Public Road",
       description: "Council or public property",
       requiresPermit: true,
-      icon: "🚗",
+      icon: <FaRoad />,
       isSelected: false,
     },
   ]);
@@ -158,7 +159,7 @@ const PermitCheckStep: React.FC<{ goToNextStep: () => void }> = ({
           <label htmlFor="skipPhoto" className="text-gray-400">
             Skip this step to upload a photo
           </label>
-        </div>
+        </div>{" "}
         <div className="flex justify-end space-x-4">
           <Button
             variant="secondary"
@@ -167,9 +168,9 @@ const PermitCheckStep: React.FC<{ goToNextStep: () => void }> = ({
           />
           <Button label="Continue" onClick={handleSubmit} />
         </div>
-      </Modal>
+      </Modal>{" "}
       <div className="flex justify-between mt-8">
-        <Button variant="secondary" label="Back" onClick={() => {}} />
+        <Button variant="secondary" label="Back" onClick={goToPreviousStep} />
         <Button label="Continue" onClick={handleSubmit} />
       </div>
     </div>

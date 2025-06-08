@@ -2,46 +2,49 @@ import React, { useState } from "react";
 import Button from "../../components/common/Button";
 import { useBooking } from "../../context/BookingContext";
 import { ActionType } from "../../utils/reducer";
+import { FaHardHat, FaHome, FaBuilding } from "react-icons/fa";
+import { GiPlantRoots } from "react-icons/gi";
 
 interface WasteType {
   id: string;
   name: string;
   description: string;
-  icon: string;
+  icon: React.ReactNode;
   isSelected: boolean;
 }
 
-const WasteTypeStep: React.FC<{ goToNextStep: () => void }> = ({
-  goToNextStep,
-}) => {
+const WasteTypeStep: React.FC<{
+  goToNextStep: () => void;
+  goToPreviousStep: () => void;
+}> = ({ goToNextStep, goToPreviousStep }) => {
   const { dispatch } = useBooking();
   const [wasteTypes, setWasteTypes] = useState<WasteType[]>([
     {
       id: "construction",
       name: "Construction Waste",
       description: "Building materials and renovation debris.",
-      icon: "🧱",
+      icon: <FaHardHat />,
       isSelected: false,
     },
     {
       id: "household",
       name: "Household Waste",
       description: "General household items and furniture.",
-      icon: "🏠",
+      icon: <FaHome />,
       isSelected: false,
     },
     {
       id: "garden",
       name: "Garden Waste",
       description: "Green waste and landscaping materials",
-      icon: "🪴",
+      icon: <GiPlantRoots />,
       isSelected: true,
     },
     {
       id: "commercial",
       name: "Commercial Waste",
       description: "Business and office clearance",
-      icon: "💼",
+      icon: <FaBuilding />,
       isSelected: false,
     },
   ]);
@@ -101,9 +104,9 @@ const WasteTypeStep: React.FC<{ goToNextStep: () => void }> = ({
             .map((type) => type.name)
             .join(", ") || "None selected"}
         </div>
-      </div>
+      </div>{" "}
       <div className="flex justify-between mt-8">
-        <Button variant="secondary" label="Back" onClick={() => {}} />
+        <Button variant="secondary" label="Back" onClick={goToPreviousStep} />
         <Button label="Continue →" onClick={handleSubmit} />
       </div>
     </div>

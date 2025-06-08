@@ -1,16 +1,24 @@
 import React from "react";
 import { useSteps } from "../../hooks/useSteps";
+import {
+  FaMapMarkerAlt,
+  FaTruck,
+  FaCreditCard,
+  FaArrowLeft,
+} from "react-icons/fa";
+import { BsTrash, BsCalendar2Date } from "react-icons/bs";
+import { MdSecurity } from "react-icons/md";
 
 const Header: React.FC = () => {
   const { currentStep, goToPreviousStep } = useSteps();
 
   const steps = [
-    { name: "Postcode", icon: "📍" },
-    { name: "Waste Type", icon: "🗑️" },
-    { name: "Select Skip", icon: "🚚" },
-    { name: "Permit Check", icon: "🛡️" },
-    { name: "Choose Date", icon: "📅" },
-    { name: "Payment", icon: "💳" },
+    { name: "Postcode", icon: <FaMapMarkerAlt /> },
+    { name: "Waste Type", icon: <BsTrash /> },
+    { name: "Select Skip", icon: <FaTruck /> },
+    { name: "Permit Check", icon: <MdSecurity /> },
+    { name: "Choose Date", icon: <BsCalendar2Date /> },
+    { name: "Payment", icon: <FaCreditCard /> },
   ];
 
   return (
@@ -24,17 +32,17 @@ const Header: React.FC = () => {
                 index <= currentStep ? "text-blue-400" : "text-gray-400"
               }`}
             >
-              <span>{step.icon}</span>
+              <span className="text-lg">{step.icon}</span>
               <span className="ml-2">{step.name}</span>
             </div>
           ))}
-        </div>
+        </div>{" "}
         {currentStep > 0 && (
           <button
             onClick={goToPreviousStep}
-            className="text-blue-400 hover:text-blue-300"
+            className="text-blue-400 hover:text-blue-300 flex items-center"
           >
-            Back
+            <FaArrowLeft className="mr-1" /> Back
           </button>
         )}
       </nav>

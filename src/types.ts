@@ -1,8 +1,10 @@
+import React from "react";
+
 export interface WasteType {
   id: string;
   name: string;
   description: string;
-  icon: string;
+  icon: React.ReactNode;
   isSelected: boolean;
 }
 
@@ -20,7 +22,7 @@ export interface SkipPlacement {
   name: string;
   description: string;
   requiresPermit: boolean;
-  icon: string;
+  icon: React.ReactNode;
   isSelected: boolean;
 }
 

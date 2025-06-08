@@ -13,9 +13,10 @@ interface SkipSize {
   image: string;
 }
 
-const SkipSizeStep: React.FC<{ goToNextStep: () => void }> = ({
-  goToNextStep,
-}) => {
+const SkipSizeStep: React.FC<{
+  goToNextStep: () => void;
+  goToPreviousStep: () => void;
+}> = ({ goToNextStep, goToPreviousStep }) => {
   const { dispatch } = useBooking();
   const [skipSizes, setSkipSizes] = useState<SkipSize[]>([
     {
@@ -109,9 +110,9 @@ const SkipSizeStep: React.FC<{ goToNextStep: () => void }> = ({
             </div>
           </div>
         ))}
-      </div>
+      </div>{" "}
       <div className="flex justify-between mt-8">
-        <Button variant="secondary" label="Back" onClick={() => {}} />
+        <Button variant="secondary" label="Back" onClick={goToPreviousStep} />
         <Button label="Continue →" onClick={handleSubmit} />
       </div>
     </div>

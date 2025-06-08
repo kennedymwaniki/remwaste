@@ -19,17 +19,42 @@ const App: React.FC = () => {
   const renderStep = () => {
     switch (currentStep) {
       case 0:
-        return <AddressStep goToNextStep={goToNextStep} />;
+        return (
+          <AddressStep
+            goToNextStep={goToNextStep}
+            goToPreviousStep={goToPreviousStep}
+          />
+        );
       case 1:
-        return <WasteTypeStep goToNextStep={goToNextStep} />;
+        return (
+          <WasteTypeStep
+            goToNextStep={goToNextStep}
+            goToPreviousStep={goToPreviousStep}
+          />
+        );
       case 2:
-        return <SkipSizeStep goToNextStep={goToNextStep} />;
+        return (
+          <SkipSizeStep
+            goToNextStep={goToNextStep}
+            goToPreviousStep={goToPreviousStep}
+          />
+        );
       case 3:
-        return <PermitCheckStep goToNextStep={goToNextStep} />;
+        return (
+          <PermitCheckStep
+            goToNextStep={goToNextStep}
+            goToPreviousStep={goToPreviousStep}
+          />
+        );
       case 4:
-        return <DateSelectionStep goToNextStep={goToNextStep} />;
+        return (
+          <DateSelectionStep
+            goToNextStep={goToNextStep}
+            goToPreviousStep={goToPreviousStep}
+          />
+        );
       case 5:
-        return <PaymentStep />;
+        return <PaymentStep goToPreviousStep={goToPreviousStep} />;
       default:
         return null;
     }

@@ -10,9 +10,10 @@ interface CalendarDate {
   isSelected: boolean;
 }
 
-const DateSelectionStep: React.FC<{ goToNextStep: () => void }> = ({
-  goToNextStep,
-}) => {
+const DateSelectionStep: React.FC<{
+  goToNextStep: () => void;
+  goToPreviousStep: () => void;
+}> = ({ goToNextStep, goToPreviousStep }) => {
   const { dispatch } = useBooking();
   const [deliveryDate, setDeliveryDate] = useState<Date | null>(
     new Date("2025-06-18")
@@ -152,9 +153,9 @@ const DateSelectionStep: React.FC<{ goToNextStep: () => void }> = ({
             </p>
           </div>
         </div>
-      </div>
+      </div>{" "}
       <div className="flex justify-between mt-8">
-        <Button variant="secondary" label="Back" onClick={() => {}} />
+        <Button variant="secondary" label="Back" onClick={goToPreviousStep} />
         <Button label="Continue to Payment" onClick={handleSubmit} />
       </div>
     </div>

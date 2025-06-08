@@ -1,15 +1,18 @@
 import React from "react";
+import { FaMapMarkerAlt, FaTruck, FaCreditCard } from "react-icons/fa";
+import { BsTrash, BsCalendar2Date } from "react-icons/bs";
+import { MdSecurity } from "react-icons/md";
 
 const StepProgressBar: React.FC<{ currentStep: number }> = ({
   currentStep,
 }) => {
   const steps = [
-    { name: "Postcode", icon: "📍" },
-    { name: "Waste Type", icon: "🗑️" },
-    { name: "Select Skip", icon: "🚚" },
-    { name: "Permit Check", icon: "🛡️" },
-    { name: "Choose Date", icon: "📅" },
-    { name: "Payment", icon: "💳" },
+    { name: "Postcode", icon: <FaMapMarkerAlt /> },
+    { name: "Waste Type", icon: <BsTrash /> },
+    { name: "Select Skip", icon: <FaTruck /> },
+    { name: "Permit Check", icon: <MdSecurity /> },
+    { name: "Choose Date", icon: <BsCalendar2Date /> },
+    { name: "Payment", icon: <FaCreditCard /> },
   ];
 
   return (
@@ -21,7 +24,7 @@ const StepProgressBar: React.FC<{ currentStep: number }> = ({
               index <= currentStep ? "text-blue-400" : "text-gray-400"
             }`}
           >
-            <span className="text-2xl">{step.icon}</span>
+            <span className="text-2xl mb-1">{step.icon}</span>
             <span className="text-sm">{step.name}</span>
           </div>
           {index < steps.length - 1 && (

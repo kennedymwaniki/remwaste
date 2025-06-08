@@ -12,7 +12,9 @@ interface PaymentDetails {
   country: string;
 }
 
-const PaymentStep: React.FC = () => {
+const PaymentStep: React.FC<{ goToPreviousStep: () => void }> = ({
+  goToPreviousStep,
+}) => {
   const { dispatch } = useBooking();
   const { state } = useBooking();
   const [paymentDetails, setPaymentDetails] = useState<PaymentDetails>({
@@ -149,10 +151,11 @@ const PaymentStep: React.FC = () => {
             <Button label="Complete Payment" onClick={handleSubmit} />
           </div>
           <div className="mt-2">
+            {" "}
             <Button
               variant="secondary"
               label="Back"
-              onClick={() => {}}
+              onClick={goToPreviousStep}
               className="w-full justify-center"
             />
           </div>
